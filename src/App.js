@@ -22,6 +22,21 @@ function App() {
     */
     const [users, setUsers] = useState(usersData); 
 
+    
+    /*
+    Creamos funcion de flecha para agregar usuarios
+    - va a recibir como parametro un usuario
+    - va a generar el id
+    - una vez el id este generado, usuamos setUsers para modificar
+    el array que ya teniamos y agregar al array el nuevo usuario
+    */
+   const addUser = (user) => {
+      user.id = uuidv4()
+      setUsers([
+        ...users,
+        user
+      ])
+   }
 
   return (
     <div className='container'> 
