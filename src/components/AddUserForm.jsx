@@ -19,6 +19,9 @@ const AddUserForm = (props) => {
     const onSubmit = (data, e) => {
         console.log(data)
 
+        //Utilizamos el props para usar la funcion y enviar los datos para agregarlos al array de objetos
+        props.addUser(data);
+
         //Limpiamos campos despues de darle al boton enviar
         e.target.reset();
     }
