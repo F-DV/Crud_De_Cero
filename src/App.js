@@ -1,6 +1,7 @@
 import React, {useState} from 'react'; //Importamos la variable de estado useState
 import UserTable from './components/UserTable';
 import { v4 as uuidv4 } from 'uuid';    //Libreria para generar ids aleatorios
+import AddUserForm from './components/AddUserForm';
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
     */
     const [users, setUsers] = useState(usersData); 
 
-    
+
     /*
     Creamos funcion de flecha para agregar usuarios
     - va a recibir como parametro un usuario
@@ -43,6 +44,7 @@ function App() {
       <h1>CRUD App with hooks</h1>
       <div className="flex-row">{/*columna 1 */}
         <h2>Add user</h2>
+        <AddUserForm />
       </div>
       <div className='flex-large'>{/*columna 2 */}
         <h2>View users</h2>
