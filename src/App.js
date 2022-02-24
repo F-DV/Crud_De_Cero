@@ -2,6 +2,7 @@ import React, {useState} from 'react'; //Importamos la variable de estado useSta
 import UserTable from './components/UserTable';
 import { v4 as uuidv4 } from 'uuid';    //Libreria para generar ids aleatorios
 import AddUserForm from './components/AddUserForm';
+import EditUserForm from './components/EditUserForm';
 
 function App() {
 
@@ -54,12 +55,29 @@ function App() {
     setUsers(users.filter(user => user.id !== id))
   }
 
+  /**Creamos un estado para saber si 
+   * pintamos el formulario de edicion o el normal*/
+  const [editing,setEditing] = useState(false);
+
   return (
     <div className='container'> 
       <h1>CRUD App with hooks</h1>
       <div className="flex-row">{/*columna 1 */}
-        <h2>Add user</h2>
-        <AddUserForm addUser={addUser}/>
+        {
+          editing ? (
+          <div>
+            <h2>Edit user</h2>
+            <EditUserForm />
+          </div>
+          ) : (
+          <div>
+            <h2>Add user</h2>
+            <AddUserForm addUser={addUser}/>
+          </div>
+          )
+        }
+        
+        
       </div>
       <div className='flex-large'>{/*columna 2 */}
         <h2>View users</h2>
