@@ -55,9 +55,29 @@ function App() {
     setUsers(users.filter(user => user.id !== id))
   }
 
-  /**Creamos un estado para saber si 
+  /**Creamos un estado para Editar usuario y saber si 
    * pintamos el formulario de edicion o el normal*/
   const [editing,setEditing] = useState(false);
+
+
+  /**
+   * Variable estado apra modificar el usuario, lo inicializamos
+   * como un objeto de usuario pero con sus campos vacios, estos campos bienen de
+   * la tabla del usuario que se quiere modificar
+   */
+  const [currentUser, setCurrentUser] = useState({
+    id: null, name: '', username: ''
+  })
+
+  /**
+   * FUNCION Donde recibimos los parametros del usuario que deseamos
+   * modificar 
+   */
+  const editRow = (user) => {
+    setCurrentUser({
+      id: user.id, name: user.name, username: user.username
+    })
+  }
 
   return (
     <div className='container'> 
@@ -86,7 +106,10 @@ function App() {
         <UserTable 
         users={users} 
         deleteUser={deleteUser} 
-        setEditing={setEditing}/>
+        setEditing={setEditing}
+        editRow={editRow}
+        />
+        
       </div>
     </div>
   );
