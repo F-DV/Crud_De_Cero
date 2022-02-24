@@ -17,7 +17,7 @@ function App() {
     ]
   
     //state 
-    /*variable de estado, y lo igualamos a useState y le pasamos los parametros 
+    /*VARIABLE de estado, y lo igualamos a useState y le pasamos los parametros 
     que declaramos en el array de objetos como valores iniciales.
     y el estado queda con informacion 
     */
@@ -25,7 +25,7 @@ function App() {
 
 
     /*
-    Creamos funcion de flecha para agregar usuarios
+    Creamos FUNCION de flecha para agregar usuarios
     - va a recibir como parametro un usuario
     - va a generar el id
     - una vez el id este generado, usuamos setUsers para modificar
@@ -38,6 +38,21 @@ function App() {
         user
       ])
    }
+   /* FUNCION de flecha para eliminar usuarios,
+   - Recibimos el id del usuario que vamos a eliminar,
+   - Enviamos la funcion como props al boton de eliminar usuario
+   */
+  const deleteUser = (id) =>{
+    //console.log(id);
+    /* 
+      -Utilizamos el setUsers para modificar el array 
+      - hacemos un recorridos a todos los users
+      - hacemos un filter de solo enciar a setUsers, los
+      usuarios que no correspondan con el id enviado ya que ese sera el que se va a eliminar
+      y se elimina excluyendolo del array
+    */
+    setUsers(users.filter(user => user.id !== id))
+  }
 
   return (
     <div className='container'> 
@@ -50,7 +65,7 @@ function App() {
         <h2>View users</h2>
         {/*Agregamos el componente con la tabla y le pasamos los usuarios  que tenemos en el estado 
         como props */}
-        <UserTable users={users}/>
+        <UserTable users={users} deleteUser={deleteUser}/>
       </div>
     </div>
   );

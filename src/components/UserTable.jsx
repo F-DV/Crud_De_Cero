@@ -34,7 +34,16 @@ const UserTable = (props) => {
                     <td>{user.username}</td>
                     <td>
                     <button className="button muted-button">Edit</button>
-                    <button className="button muted-button">Delete</button>
+                    <button 
+                        className="button muted-button"
+                        /*
+                            Utilizamos la otra funcion que me trae el props
+                            para eliminar usuario, la pasamos por medio de una funcion de flecha
+                            para que no se ejecute inmediatamente se pinte, si no cuando el
+                            usuario presion el boton
+                        */
+                        onClick={() => {props.deleteUser(user.id)}} 
+                    >Delete</button>
                     </td>
                 </tr>
                 )) : <tr>
