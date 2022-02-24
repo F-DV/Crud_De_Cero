@@ -83,7 +83,10 @@ function App() {
         <h2>View users</h2>
         {/*Agregamos el componente con la tabla y le pasamos los usuarios  que tenemos en el estado 
         como props */}
-        <UserTable users={users} deleteUser={deleteUser}/>
+        <UserTable 
+        users={users} 
+        deleteUser={deleteUser} 
+        setEditing={setEditing}/>
       </div>
     </div>
   );
