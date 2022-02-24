@@ -36,7 +36,7 @@ const UserTable = (props) => {
                     <button 
                         className="button muted-button"
                         onClick={
-                            () => {props.setEditing(true)}
+                            () => {props.editRow(user)}
                         }
                     >Edit</button>
                     <button 
