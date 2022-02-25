@@ -74,9 +74,27 @@ function App() {
    * modificar 
    */
   const editRow = (user) => {
+    setEditing(true); //cuadno presionemos el boton de editar, enviara true a setEditin lo que hara que pinte el formulario de editar
     setCurrentUser({
       id: user.id, name: user.name, username: user.username
     })
+  }
+
+  /**
+   * FUNCION que se encarga de modificar los usuarios
+   * -recibimos un id, y los datos correspondientes a ese id
+   */
+  const updateUser = (id, updateUser) => {
+    setEditing(false); //cambiamos a false editing para pintar denuevo el formulario de agregar usuarios
+    
+    /**
+     * modificamos el usuario
+     * -recorremos los usuarios con map
+     * - a cada iteracion preguntamos si el id coincide con el usuario
+     * al que se le dio click en edit,
+     * - si councide pintamos el updateuser y si no , que me siga pintando el mismo
+     */
+    setUsers(users.map(user => (user.id == id ? updateUser : user)))
   }
 
   return (
@@ -87,7 +105,9 @@ function App() {
           editing ? (
           <div>
             <h2>Edit user</h2>
-            <EditUserForm />
+            <EditUserForm 
+              currentUser={currentUser}
+            />
           </div>
           ) : (
           <div>
@@ -106,7 +126,6 @@ function App() {
         <UserTable 
         users={users} 
         deleteUser={deleteUser} 
-        setEditing={setEditing}
         editRow={editRow}
         />
         

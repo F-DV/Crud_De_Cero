@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form' //llamamos la libreria para trabajar c
 
 const EditUserForm = (props) => {
     
+    //console.log(props.currentUser); //imprimimos en consola el usuaripo que vamos a modificar
     /*
      * Creamos una funcion de Estado, de la libreria para manejar datos de formulario,
     con esta libreria podemos validar los campos e imprimir errores de
@@ -10,7 +11,7 @@ const EditUserForm = (props) => {
      con el name del formulario nosotros podemos enviarlo al objeto
     */
     //State
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, setValue, defaultValues: currentUser, formState: { errors } } = useForm();
     /*
     onSubmit es una funcion para enviar los datos que hay en los
     campos del formulario,esta funcion se va a utilizar en la etiqueta 
@@ -18,7 +19,9 @@ const EditUserForm = (props) => {
     */
     const onSubmit = (data, e) => {
         console.log(data)
+        data.id = props.currentUser.id
 
+        props.updateUser( props.currentUser.id, data)
         //Limpiamos campos despues de darle al boton enviar
         e.target.reset();
     }
